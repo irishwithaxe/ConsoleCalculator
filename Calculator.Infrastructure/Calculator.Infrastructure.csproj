@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Lexem.cs" />
     <Compile Include="ILexemAnalyzer.cs" />
+    <Compile Include="LexemAnalyzer.cs" />
     <Compile Include="OperationEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,5 +12,10 @@ namespace Calculator.Infrastructure
       {
          return string.Format(str, arg0);
       }
+
+      public static string F(this string str, object arg0, object arg1)
+      {
+         return string.Format(str, arg0, arg1);
+      }
    }
 }

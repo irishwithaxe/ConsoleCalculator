@@ -22,7 +22,7 @@ namespace Calculator.Infrastructure
          _value = 0.0;
       }
 
-      public bool IsNumber => _op != OperationEnum.None;
+      public bool IsNumber => _op == OperationEnum.None;
       public double Value => _value;
 
       public Lexem Operation(Lexem left, Lexem right)
