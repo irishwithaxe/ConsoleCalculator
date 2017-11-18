@@ -41,12 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="ILexemFactory.cs" />
+    <Compile Include="ICalculator.cs" />
     <Compile Include="Lexem.cs" />
     <Compile Include="ILexemParser.cs" />
     <Compile Include="LexemParser.cs" />
     <Compile Include="OperationEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShuntingYardCalculator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

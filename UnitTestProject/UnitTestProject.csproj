@@ -50,6 +50,9 @@
   <ItemGroup>
     <Compile Include="LexemParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShuntingYardPostfixNotationTest.cs" />
+    <Compile Include="ShuntingYardPostfixNotationCalculateTest.cs" />
+    <Compile Include="FullCalculatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -5,6 +5,7 @@ namespace Calculator.Infrastructure
    public struct Lexem
    {
       private OperationEnum _op;
+
       private double _value;
 
       public Lexem(double value)
@@ -22,11 +23,27 @@ namespace Calculator.Infrastructure
          _value = 0.0;
       }
 
-      public double Value => _value;
-
       public bool IsOperation => _op != OperationEnum.None;
 
-      public byte OperationPriority => (byte)_op;
+      public byte OperationPriority {
+         get {
+            switch (_op)
+            {
+               case OperationEnum.Addition:
+               case OperationEnum.Subtraction:
+                  return 1;
+
+               case OperationEnum.Multiplication:
+               case OperationEnum.Division:
+                  return 2;
+
+               default:
+                  throw new NotImplementedException("Unexpected operation type {0}".F(_op.ToString()));
+            }
+         }
+      }
+
+      public double Value => _value;
 
       public Lexem Calculate(Lexem left, Lexem right)
       {
@@ -61,6 +78,13 @@ namespace Calculator.Infrastructure
          }
 
          return newLexem;
+      }
+
+      public override string ToString()
+      {
+         if (IsOperation)
+            return _op.ToString();
+         return Value.ToString();
       }
    }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calculator.Infrastructure
 {
-   public interface ILexemFactory
+   public interface ICalculator
    {
-
+      double Calculate(IEnumerable<Lexem> lexems);
    }
 }
