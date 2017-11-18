@@ -41,9 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="ILexemFactory.cs" />
     <Compile Include="Lexem.cs" />
-    <Compile Include="ILexemAnalyzer.cs" />
-    <Compile Include="LexemAnalyzer.cs" />
+    <Compile Include="ILexemParser.cs" />
+    <Compile Include="LexemParser.cs" />
     <Compile Include="OperationEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

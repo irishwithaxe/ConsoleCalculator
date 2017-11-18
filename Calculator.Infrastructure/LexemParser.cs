@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Calculator.Infrastructure
 {
-   public class LexemAnalyzer : ILexemAnalyzer
+   public class LexemParser : ILexemParser
    {
       public SymbolType GetSymbolType(string expression, int number)
       {

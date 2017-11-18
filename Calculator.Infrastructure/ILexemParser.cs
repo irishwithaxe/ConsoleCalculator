@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator.Infrastructure
 {
-   interface ILexemAnalyzer
+   public interface ILexemParser
    {
       IEnumerable<Lexem> Parse(string expression);
    }

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calculator.Infrastructure
 {
-   public enum OperationEnum : byte
+   public interface ILexemFactory
    {
-      None = 0,
-      Addition = 1,
-      Subtraction = 2,
-      Multiplication = 3,
-      Division = 4,
+
    }
 }

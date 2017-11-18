@@ -22,16 +22,19 @@ namespace Calculator.Infrastructure
          _value = 0.0;
       }
 
-      public bool IsNumber => _op == OperationEnum.None;
       public double Value => _value;
 
-      public Lexem Operation(Lexem left, Lexem right)
+      public bool IsOperation => _op != OperationEnum.None;
+
+      public byte OperationPriority => (byte)_op;
+
+      public Lexem Calculate(Lexem left, Lexem right)
       {
-         if (IsNumber)
+         if (!IsOperation)
             throw new ArgumentException("Current lexem is not an operation.");
-         if (!left.IsNumber)
+         if (left.IsOperation)
             throw new ArgumentException("Left lexem is not a number.");
-         if (!right.IsNumber)
+         if (right.IsOperation)
             throw new ArgumentException("Right lexem is not a number.");
 
          var newLexem = new Lexem();
