@@ -22,8 +22,7 @@ namespace Calculator.Infrastructure
             }
 
             while (stack.Any() &&
-               stack.Last().IsOperation &&
-               stack.Last().OperationPriority >= current.OperationPriority)
+               stack.First().OperationPriority >= current.OperationPriority)
             {
                list.Add(stack.Pop());
             }
@@ -44,24 +43,24 @@ namespace Calculator.Infrastructure
          var stack = new Stack<Lexem>();
          Lexem left, right;
 
-         void _pop()
+         void _pop(Lexem op)
          {
             if (stack.Any())
                right = stack.Pop();
             else
-               throw new ArgumentException("Incorrect expression.");
+               throw new ArgumentException("Right argument is missing for operation {0}".F(op.ToString()));
 
             if (stack.Any())
                left = stack.Pop();
             else
-               throw new ArgumentException("Incorrect expression.");
+               throw new ArgumentException("Left argument is missing for operation {0}".F(op.ToString()));
          }
 
          foreach (var current in postfixNotation)
          {
             if (current.IsOperation)
             {
-               _pop();
+               _pop(current);
                stack.Push(current.Calculate(left, right));
             }
             else

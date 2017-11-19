@@ -82,9 +82,26 @@ namespace Calculator.Infrastructure
 
       public override string ToString()
       {
-         if (IsOperation)
-            return _op.ToString();
-         return Value.ToString();
+         if (!IsOperation)
+            return Value.ToString();
+
+         switch (_op)
+         {
+            case OperationEnum.Addition:
+               return "+";
+
+            case OperationEnum.Subtraction:
+               return "-";
+
+            case OperationEnum.Multiplication:
+               return "*";
+
+            case OperationEnum.Division:
+               return "/";
+
+            default:
+               throw new NotImplementedException("Operation {0} is not expected.".F(_op.ToString()));
+         }
       }
    }
 }
