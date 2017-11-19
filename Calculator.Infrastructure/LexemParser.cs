@@ -98,12 +98,12 @@ namespace Calculator.Infrastructure
                   while (next < expression.Length && GetSymbolType(expression, next) == SymbolType.number)
                      next++;
 
-                  if (!double.TryParse(expression.Substring(current, next - current), 
+                  if (!double.TryParse(expression.Substring(current, next - current),
                      NumberStyles.AllowDecimalPoint, NumberFormatInfo.InvariantInfo, out var doubleValue))
                      throw new ArgumentException("Incorrect symbols from {0} to {1}".F(current, next - 1));
 
                   lexems.Add(new Lexem(doubleValue));
-                  current = next;
+                  current = next - 1;
                   break;
 
                default:

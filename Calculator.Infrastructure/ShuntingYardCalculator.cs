@@ -45,15 +45,11 @@ namespace Calculator.Infrastructure
 
          void _pop(Lexem op)
          {
-            if (stack.Any())
-               right = stack.Pop();
-            else
-               throw new ArgumentException("Right argument is missing for operation {0}".F(op.ToString()));
+            if (stack.Count < 2)
+               throw new ArgumentException("Argument for operation '{0}' is missing".F(op.ToString()));
 
-            if (stack.Any())
-               left = stack.Pop();
-            else
-               throw new ArgumentException("Left argument is missing for operation {0}".F(op.ToString()));
+            right = stack.Pop();
+            left = stack.Pop();
          }
 
          foreach (var current in postfixNotation)
@@ -69,7 +65,7 @@ namespace Calculator.Infrastructure
             }
          }
 
-         if(stack.Count != 1)
+         if (stack.Count != 1)
             throw new ArgumentException("Incorrect expression.");
 
          return stack.Pop().Value;

@@ -21,43 +21,34 @@ namespace UnitTestProject
       [TestMethod]
       public void ParseTest2()
       {
-         var expression = "5 +3";
+         var expression = "5+3";
          var la = new LexemParser();
          var lexems = la.Parse(expression).ToArray();
 
-         Assert.AreEqual(3, lexems.Length);
-         Assert.AreEqual(3.0, lexems[2].Value);
-         Assert.IsTrue(lexems[1].IsOperation);
-
-         var val = lexems[1].Calculate(lexems[0], lexems[2]);
-         Assert.AreEqual(8.0, val.Value);
+         var strexpr = string.Join(" ", lexems.Select(x => x.ToString()));
+         Assert.AreEqual("5 + 3", strexpr);
       }
 
       [TestMethod]
       public void ParseTest3()
       {
-         var expression = " 5.2 +   87  ";
+         var expression = " 52 +   87  ";
          var la = new LexemParser();
          var lexems = la.Parse(expression).ToArray();
 
-         Assert.AreEqual(3, lexems.Length);
-         Assert.AreEqual(87.0, lexems[2].Value);
-         Assert.IsTrue(lexems[1].IsOperation);
-
-         var val = lexems[1].Calculate(lexems[0], lexems[2]);
-         Assert.AreEqual(92.2, val.Value);
+         var strexpr = string.Join(" ", lexems.Select(x => x.ToString()));
+         Assert.AreEqual("52 + 87", strexpr);
       }
 
       [TestMethod]
       public void ParseTest4()
       {
-         var expression = " 5.2 +   87  / 2.2 * 0.41234 +   2++ ///";
+         var expression = " 52 +   87  / 22 * 41234*** +   2++ ///";
          var la = new LexemParser();
          var lexems = la.Parse(expression).ToArray();
 
-         Assert.AreEqual(13, lexems.Length);
-         Assert.AreEqual(87.0, lexems[2].Value);
-         Assert.IsTrue(lexems[12].IsOperation);
+         var strexpr = string.Join(" ", lexems.Select(x => x.ToString()));
+         Assert.AreEqual("52 + 87 / 22 * 41234 * * * + 2 + + / / /", strexpr);
       }
 
       [TestMethod]
@@ -71,15 +62,15 @@ namespace UnitTestProject
       [TestMethod]
       public void GetSymbolTest2()
       {
-         var expression = "5 +3";
+         var expression = "5+3";
          var la = new LexemParser();
-         Assert.AreEqual(LexemParser.SymbolType.operationAddition, la.GetSymbolType(expression, 2));
+         Assert.AreEqual(LexemParser.SymbolType.operationAddition, la.GetSymbolType(expression, 1));
       }
 
       [TestMethod]
       public void GetSymbolTest3()
       {
-         var expression = "5 +3";
+         var expression = "   5+ 3";
          var la = new LexemParser();
          Assert.AreEqual(LexemParser.SymbolType.whitespace, la.GetSymbolType(expression, 1));
       }

@@ -50,6 +50,15 @@ namespace UnitTestProject
       }
 
       [TestMethod]
+      public void TestMethod31()
+      {
+         var expected = 7 - 2 * 3;
+         var exprsn = "7-2*3";
+         var result = Calc(exprsn);
+         Assert.IsTrue(Equal(expected, result));
+      }
+
+      [TestMethod]
       public void TestMethod4()
       {
          var expected = 2.322448979591837; // вот какая погрешность ...
